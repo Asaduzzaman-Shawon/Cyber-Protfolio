@@ -492,6 +492,10 @@ section { position: relative; z-index: 5; padding: 80px 8%; }
   display: flex; align-items: center; gap: 14px;
   border: 1px solid var(--border); padding: 14px 20px;
   transition: border-color 0.2s, background 0.2s;
+   text-decoration: none;
+}
+.contact-row a {
+  text-decoration: none;
 }
 .contact-row:hover { border-color: var(--border-bright); background: var(--blue-dark); }
 .c-label {
