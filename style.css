@@ -113,7 +113,6 @@ body::before {
   pointer-events: none;
   z-index: 6;
 }
-
 /* ── NAVBAR ── */
 nav {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
@@ -676,18 +675,22 @@ footer span { color: var(--blue); }
     letter-spacing: 0.06em;
   }
 
-  /* ── Spider web: hide on mobile ── */
-  #spider-web-canvas { display: none; }
+  /* ── Spider web: show on mobile but smaller ── */
+  #spider-web-canvas {
+    display: block;
+    width: 110px;
+  }
 
-  /* ── Stats ── */
+  /* ── Stats: 2 per row always ── */
   .stats-bar {
     padding: 20px 5%;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
   }
   .stat-item {
-    flex: 1 1 42%;
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
     text-align: center;
   }
   .stat-num   { font-size: 26px; }
@@ -776,6 +779,13 @@ footer span { color: var(--blue); }
   .hero-desc  { font-size: 12px; }
   .btn-primary,
   .btn-secondary { font-size: 9px; padding: 9px 13px; }
-  .stat-item  { flex: 1 1 100%; }
+  /* Keep stats 2-per-row even on 320px */
+  .stat-item  {
+    flex: 0 0 calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
+  .stat-num   { font-size: 20px; }
+  .stat-label { font-size: 8px; letter-spacing: 0.08em; }
+  .stats-bar  { gap: 8px; padding: 16px 4%; }
   section     { padding: 40px 4%; }
 }

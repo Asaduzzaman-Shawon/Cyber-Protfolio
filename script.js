@@ -637,16 +637,17 @@ document.querySelectorAll('.section-header').forEach(el => {
     const canvas = document.getElementById('spider-web-canvas');
     const ctx    = canvas.getContext('2d');
 
-    let W = 400, H = heroEl.offsetHeight || window.innerHeight;
-    let climbY  = 60;
+    function isMobile() { return window.innerWidth <= 768; }
+    function getSpiderX() { return isMobile() ? 55 : 160; }
+
+    let W        = isMobile() ? 110 : 400;
+    let H        = heroEl.offsetHeight || window.innerHeight;
+    let climbY   = 80;
     let climbDir = 1;
-    const SPEED = 0.8;
-    // 2.5 inches ≈ 240px from the right edge → SPIDER_X = canvas width - 240 - small offset
-    // Canvas is 400px wide, so spider sits at 400 - 240 = 160px from left (= 240px from right)
-    const SPIDER_X = 160;
+    const SPEED  = 0.8;
 
     function resize() {
-      W = 400;
+      W = isMobile() ? 110 : 400;
       H = heroEl.offsetHeight || window.innerHeight;
       canvas.width  = W;
       canvas.height = H;
@@ -660,7 +661,7 @@ document.querySelectorAll('.section-header').forEach(el => {
     // A few diagonal braces add structure.
 
     function drawWeb(ctx, W, H, spiderY) {
-      const cx     = SPIDER_X;   // vertical line x
+      const cx     = getSpiderX();   // vertical line x
       const TOP    = 30;
       const BOTTOM = H - 30;
 
@@ -737,7 +738,7 @@ document.querySelectorAll('.section-header').forEach(el => {
       const side = Math.random() > 0.5 ? 1 : -1;
       const hw   = 28 + Math.sin((rung / 12) * Math.PI) * 30;
       dewDrops.push({
-        x: SPIDER_X + side * (Math.random() * hw),
+        x: getSpiderX() + side * (Math.random() * hw),
         y: 30 + rung * 38 + Math.random() * 20,
         r: 1.2 + Math.random() * 1.4,
       });
@@ -761,8 +762,8 @@ document.querySelectorAll('.section-header').forEach(el => {
       ctx.strokeStyle = 'rgba(180,230,255,0.45)';
       ctx.lineWidth   = 1;
       ctx.beginPath();
-      ctx.moveTo(SPIDER_X, 30);
-      ctx.lineTo(SPIDER_X, spiderY);
+      ctx.moveTo(getSpiderX(), 30);
+      ctx.lineTo(getSpiderX(), spiderY);
       ctx.stroke();
       ctx.restore();
     }
@@ -788,7 +789,8 @@ document.querySelectorAll('.section-header').forEach(el => {
       // Draw climbing spider using drawSpider() — size 33, blue theme
       // Head faces down when descending (angle=0), up when ascending (angle=π)
       const angle = climbDir === 1 ? 0 : Math.PI;
-      drawSpider(ctx, SPIDER_X, climbY, angle, 33,
+      const spiderSize = isMobile() ? 14 : 33;
+      drawSpider(ctx, getSpiderX(), climbY, angle, spiderSize,
         '#002244',
         'rgba(0,180,255,0.85)',
         '#00efff'
