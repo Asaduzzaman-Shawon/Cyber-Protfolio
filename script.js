@@ -5,9 +5,11 @@
 // ── MOBILE NAV HAMBURGER ──
 function closeDrawer() {
   document.getElementById('mobile-drawer').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('active');
 }
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobile-drawer').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('active');
 });
 
 // ── CUSTOM CURSOR ──

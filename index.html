@@ -1,383 +1,336 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-     <meta name="google-site-verification" content="ib_7tzqa5HXA2FT2CyD_JWbx9yZJCqCJR0SOraaVysg" />
-    <title>Shawon Ahmed — Ethical Hacker &amp; Cyber Security Expert</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="img/favIcon.jpeg" />
-  </head>
-  <body>
-    <!-- ── BACKGROUND LAYERS ── -->
-    <canvas id="bg-canvas"></canvas>
-    <canvas id="particle-canvas"></canvas>
-    <div class="circuit-overlay"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shawon Ahmed — Ethical Hacker &amp; Cyber Security Expert</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-    <!-- ── CUSTOM CURSOR ── -->
-    <div id="cursor"></div>
-    <div id="cursor-dot"></div>
+  <!-- ── BACKGROUND LAYERS ── -->
+  <canvas id="bg-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="circuit-overlay"></div>
 
-    <!-- ════════════════════════════════
+  <!-- ── CUSTOM CURSOR ── -->
+  <div id="cursor"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- ════════════════════════════════
        NAVIGATION
   ════════════════════════════════ -->
-    <nav>
-      <div class="nav-logo">SHA<span>W</span>ON.SH</div>
-      <ul class="nav-links">
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#tools">Arsenal</a></li>
-        <li><a href="#certs">Certs</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-status">
-        <span class="status-dot"></span>
-        SYSTEM ONLINE
-      </div>
-      <div class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-    <div class="nav-mobile-drawer" id="mobile-drawer">
-      <a href="#skills" onclick="closeDrawer()">Skills</a>
-      <a href="#projects" onclick="closeDrawer()">Projects</a>
-      <a href="#tools" onclick="closeDrawer()">Arsenal</a>
-      <a href="#certs" onclick="closeDrawer()">Certs</a>
-      <a href="#contact" onclick="closeDrawer()">Contact</a>
+  <nav>
+    <div class="nav-logo">SHA<span>W</span>ON.SH</div>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#tools">Arsenal</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      SYSTEM ONLINE
     </div>
+    <div class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="nav-mobile-drawer" id="mobile-drawer">
+    <a href="#skills"   onclick="closeDrawer()">Skills</a>
+    <a href="#projects" onclick="closeDrawer()">Projects</a>
+    <a href="#tools"    onclick="closeDrawer()">Arsenal</a>
+    <a href="#certs"    onclick="closeDrawer()">Certs</a>
+    <a href="#contact"  onclick="closeDrawer()">Contact</a>
+  </div>
 
-    <!-- ════════════════════════════════
+  <!-- ════════════════════════════════
        HERO
   ════════════════════════════════ -->
-    <section id="hero">
-      <!-- Spider animations — hero only -->
-      <canvas id="spider-cursor-canvas"></canvas>
-      <canvas id="spider-web-canvas"></canvas>
+  <section id="hero">
+    <!-- Spider animations — hero only -->
+    <canvas id="spider-cursor-canvas"></canvas>
+    <canvas id="spider-web-canvas"></canvas>
 
-      <div class="hero-grid">
-        <!-- Left: Name + Typewriter + CTA -->
-        <div class="hero-left">
-          <div class="hero-tag">CLEARANCE LEVEL: WHITE HAT</div>
-          <h1 class="hero-name">
-            <span class="glitch" data-text="SHAWON">SHAWON</span><br />
-            <span class="accent">AHMED</span>
-          </h1>
-          <div class="hero-title" id="typed-title">
-            <span class="cursor-blink"></span>
-          </div>
-          <p class="hero-desc">
-            Penetration tester, vulnerability researcher, and digital defender.
-            I break systems to make them stronger — turning attack surface into
-            armor.
-          </p>
-          <div class="hero-btns">
-            <a href="#projects" class="btn-primary">View Projects</a>
-            <a href="#contact" class="btn-secondary">Hire Me</a>
-          </div>
+    <div class="hero-grid">
+
+      <!-- Left: Name + Typewriter + CTA -->
+      <div class="hero-left">
+        <div class="hero-tag">CLEARANCE LEVEL: WHITE HAT</div>
+        <h1 class="hero-name">
+          <span class="glitch" data-text="SHAWON">SHAWON</span><br />
+          <span class="accent">AHMED</span>
+        </h1>
+        <div class="hero-title" id="typed-title">
+          <span class="cursor-blink"></span>
         </div>
-
-        <!-- Right: Animated terminal -->
-        <div class="hero-right">
-          <div class="hero-terminal">
-            <div class="terminal-bar">
-              <div class="t-dot r"></div>
-              <div class="t-dot y"></div>
-              <div class="t-dot g"></div>
-              <span class="t-title">shawon@kali:~$ whoami</span>
-            </div>
-            <div class="terminal-body" id="terminal-output"></div>
-          </div>
+        <p class="hero-desc">
+          Penetration tester, vulnerability researcher, and digital defender.
+          I break systems to make them stronger — turning attack surface into armor.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#contact"  class="btn-secondary">Hire Me</a>
         </div>
       </div>
-    </section>
 
-    <!-- ════════════════════════════════
+      <!-- Right: Animated terminal -->
+      <div class="hero-right">
+        <div class="hero-terminal">
+          <div class="terminal-bar">
+            <div class="t-dot r"></div>
+            <div class="t-dot y"></div>
+            <div class="t-dot g"></div>
+            <span class="t-title">shawon@kali:~$ whoami</span>
+          </div>
+          <div class="terminal-body" id="terminal-output"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
        STATS BAR
   ════════════════════════════════ -->
-    <div class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-num" data-count="47">0</div>
-        <div class="stat-label">CTF Challenges Solved</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="120">0</div>
-        <div class="stat-label">Vulnerabilities Found</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="15">0</div>
-        <div class="stat-label">Bug Bounties</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="3">0</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num" data-count="47">0</div>
+      <div class="stat-label">CTF Challenges Solved</div>
     </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="120">0</div>
+      <div class="stat-label">Vulnerabilities Found</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="15">0</div>
+      <div class="stat-label">Bug Bounties</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="3">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </div>
 
-    <!-- ════════════════════════════════
+  <!-- ════════════════════════════════
        SKILL MATRIX  (3 × 2 grid, JS-rendered)
   ════════════════════════════════ -->
-    <section id="skills">
-      <div class="section-header reveal">
-        <span class="section-tag">// CAPABILITIES</span>
-        <h2 class="section-title">Skill Matrix</h2>
-      </div>
-      <div class="skills-grid" id="skills-grid">
-        <!-- Cards injected by script.js -->
-      </div>
-    </section>
+  <section id="skills">
+    <div class="section-header reveal">
+      <span class="section-tag">// CAPABILITIES</span>
+      <h2 class="section-title">Skill Matrix</h2>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- Cards injected by script.js -->
+    </div>
+  </section>
 
-    <!-- ════════════════════════════════
+  <!-- ════════════════════════════════
        PROJECT ARSENAL  (3 × 2 grid)
   ════════════════════════════════ -->
-    <section id="projects">
-      <div class="section-header reveal">
-        <span class="section-tag">// OPERATIONS LOG</span>
-        <h2 class="section-title">Project Arsenal</h2>
+  <section id="projects">
+    <div class="section-header reveal">
+      <span class="section-tag">// OPERATIONS LOG</span>
+      <h2 class="section-title">Project Arsenal</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-id">OPS-001 // NETWORK RECON</span>
+        <div class="project-name">AutoRecon Framework</div>
+        <p class="project-desc">Automated network reconnaissance tool that scans, maps, and reports vulnerabilities across complex enterprise networks using a custom Python pipeline.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Nmap</span>
+          <span class="tag">Nessus</span><span class="tag">Shell</span>
+        </div>
+        <a href="#" class="project-link">View on GitHub →</a>
       </div>
-      <div class="projects-grid">
-        <div class="project-card reveal reveal-delay-1">
-          <span class="project-id">OPS-001 // NETWORK RECON</span>
-          <div class="project-name">AutoRecon Framework</div>
-          <p class="project-desc">
-            Automated network reconnaissance tool that scans, maps, and reports
-            vulnerabilities across complex enterprise networks using a custom
-            Python pipeline.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">Nmap</span>
-            <span class="tag">Nessus</span><span class="tag">Shell</span>
-          </div>
-          <a href="#" class="project-link">View on GitHub →</a>
-        </div>
 
-        <div class="project-card reveal reveal-delay-2">
-          <span class="project-id">OPS-002 // WEB PENTESTING</span>
-          <div class="project-name">XSS Hunter Pro</div>
-          <p class="project-desc">
-            Advanced XSS payload injector and DOM fuzzer for detecting stored,
-            reflected, and blind cross-site scripting vulnerabilities in web
-            applications.
-          </p>
-          <div class="project-tags">
-            <span class="tag">JavaScript</span><span class="tag">BurpSuite</span
-            ><span class="tag">Node.js</span>
-          </div>
-          <a href="#" class="project-link">View on GitHub →</a>
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-id">OPS-002 // WEB PENTESTING</span>
+        <div class="project-name">XSS Hunter Pro</div>
+        <p class="project-desc">Advanced XSS payload injector and DOM fuzzer for detecting stored, reflected, and blind cross-site scripting vulnerabilities in web applications.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span><span class="tag">BurpSuite</span><span class="tag">Node.js</span>
         </div>
-
-        <div class="project-card reveal reveal-delay-3">
-          <span class="project-id">OPS-003 // MALWARE ANALYSIS</span>
-          <div class="project-name">Sandbox Detonator</div>
-          <p class="project-desc">
-            Isolated malware sandbox built on QEMU/KVM to safely detonate and
-            analyze suspicious binaries, capturing system calls, registry
-            changes, and network traffic.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C</span><span class="tag">QEMU</span>
-            <span class="tag">Yara</span><span class="tag">Wireshark</span>
-          </div>
-          <a href="#" class="project-link">View on GitHub →</a>
-        </div>
-
-        <div class="project-card reveal reveal-delay-4">
-          <span class="project-id">OPS-004 // CTF TOOLING</span>
-          <div class="project-name">CipherKit CLI</div>
-          <p class="project-desc">
-            Modular CTF toolkit that auto-detects cipher types, bruteforces
-            common encodings, and applies known exploit patterns to
-            cryptographic CTF challenges.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">Crypto</span
-            ><span class="tag">Rev Eng</span>
-          </div>
-          <a href="#" class="project-link">View on GitHub →</a>
-        </div>
-
-        <div class="project-card reveal reveal-delay-5">
-          <span class="project-id">OPS-005 // PHISHING SIM</span>
-          <div class="project-name">PhishNet Simulator</div>
-          <p class="project-desc">
-            Enterprise phishing simulation platform for security awareness
-            training — crafts campaigns, tracks click rates, and generates
-            detailed risk assessment reports.
-          </p>
-          <div class="project-tags">
-            <span class="tag">GoLang</span><span class="tag">SMTP</span
-            ><span class="tag">React</span>
-          </div>
-          <a href="#" class="project-link">View on GitHub →</a>
-        </div>
-
-        <div class="project-card reveal reveal-delay-6">
-          <span class="project-id">OPS-006 // BUG BOUNTY</span>
-          <div class="project-name">HackerOne Report #2847</div>
-          <p class="project-desc">
-            Discovered critical IDOR vulnerability in a fintech platform
-            allowing unauthorized access to user transaction records.
-            Responsibly disclosed, patched in 48hrs.
-          </p>
-          <div class="project-tags">
-            <span class="tag">IDOR</span><span class="tag">API Sec</span
-            ><span class="tag">P1 Critical</span>
-          </div>
-          <a href="#" class="project-link">View Report →</a>
-        </div>
+        <a href="#" class="project-link">View on GitHub →</a>
       </div>
-    </section>
 
-    <!-- ════════════════════════════════
+      <div class="project-card reveal reveal-delay-3">
+        <span class="project-id">OPS-003 // MALWARE ANALYSIS</span>
+        <div class="project-name">Sandbox Detonator</div>
+        <p class="project-desc">Isolated malware sandbox built on QEMU/KVM to safely detonate and analyze suspicious binaries, capturing system calls, registry changes, and network traffic.</p>
+        <div class="project-tags">
+          <span class="tag">C</span><span class="tag">QEMU</span>
+          <span class="tag">Yara</span><span class="tag">Wireshark</span>
+        </div>
+        <a href="#" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal reveal-delay-4">
+        <span class="project-id">OPS-004 // CTF TOOLING</span>
+        <div class="project-name">CipherKit CLI</div>
+        <p class="project-desc">Modular CTF toolkit that auto-detects cipher types, bruteforces common encodings, and applies known exploit patterns to cryptographic CTF challenges.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Crypto</span><span class="tag">Rev Eng</span>
+        </div>
+        <a href="#" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal reveal-delay-5">
+        <span class="project-id">OPS-005 // PHISHING SIM</span>
+        <div class="project-name">PhishNet Simulator</div>
+        <p class="project-desc">Enterprise phishing simulation platform for security awareness training — crafts campaigns, tracks click rates, and generates detailed risk assessment reports.</p>
+        <div class="project-tags">
+          <span class="tag">GoLang</span><span class="tag">SMTP</span><span class="tag">React</span>
+        </div>
+        <a href="#" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal reveal-delay-6">
+        <span class="project-id">OPS-006 // BUG BOUNTY</span>
+        <div class="project-name">HackerOne Report #2847</div>
+        <p class="project-desc">Discovered critical IDOR vulnerability in a fintech platform allowing unauthorized access to user transaction records. Responsibly disclosed, patched in 48hrs.</p>
+        <div class="project-tags">
+          <span class="tag">IDOR</span><span class="tag">API Sec</span><span class="tag">P1 Critical</span>
+        </div>
+        <a href="#" class="project-link">View Report →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
        HACKER'S ARSENAL  (9 × 2 grid, JS-rendered)
   ════════════════════════════════ -->
-    <section id="tools">
-      <div class="section-header reveal">
-        <span class="section-tag">// TECH STACK</span>
-        <h2 class="section-title">Hacker's Arsenal</h2>
-      </div>
-      <div class="tools-grid" id="tools-grid">
-        <!-- Items injected by script.js -->
-      </div>
-    </section>
+  <section id="tools">
+    <div class="section-header reveal">
+      <span class="section-tag">// TECH STACK</span>
+      <h2 class="section-title">Hacker's Arsenal</h2>
+    </div>
+    <div class="tools-grid" id="tools-grid">
+      <!-- Items injected by script.js -->
+    </div>
+  </section>
 
-    <!-- ════════════════════════════════
+  <!-- ════════════════════════════════
        CERTIFICATIONS  (hover effects)
   ════════════════════════════════ -->
-    <section id="certs">
-      <div class="section-header reveal">
-        <span class="section-tag">// CREDENTIALS</span>
-        <h2 class="section-title">Certifications</h2>
-      </div>
-      <div class="timeline">
-        <div class="t-item reveal reveal-delay-1">
-          <div class="t-item-inner">
-            <div class="t-left">
-              <div class="t-year">TARGET: 2025</div>
-              <div class="t-cert">CEH — Certified Ethical Hacker</div>
-              <div class="t-org">EC-Council</div>
-            </div>
-            <span class="t-badge progress">In Progress</span>
-          </div>
-        </div>
+  <section id="certs">
+    <div class="section-header reveal">
+      <span class="section-tag">// CREDENTIALS</span>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="timeline">
 
-        <div class="t-item reveal reveal-delay-2">
-          <div class="t-item-inner">
-            <div class="t-left">
-              <div class="t-year">2024</div>
-              <div class="t-cert">CompTIA Security+</div>
-              <div class="t-org">CompTIA</div>
-            </div>
-            <span class="t-badge active">Completed</span>
+      <div class="t-item reveal reveal-delay-1">
+        <div class="t-item-inner">
+          <div class="t-left">
+            <div class="t-year">TARGET: 2025</div>
+            <div class="t-cert">CEH — Certified Ethical Hacker</div>
+            <div class="t-org">EC-Council</div>
           </div>
-        </div>
-
-        <div class="t-item reveal reveal-delay-3">
-          <div class="t-item-inner">
-            <div class="t-left">
-              <div class="t-year">2024</div>
-              <div class="t-cert">eJPT — Junior Penetration Tester</div>
-              <div class="t-org">eLearnSecurity</div>
-            </div>
-            <span class="t-badge active">Completed</span>
-          </div>
-        </div>
-
-        <div class="t-item reveal reveal-delay-4">
-          <div class="t-item-inner">
-            <div class="t-left">
-              <div class="t-year">2023</div>
-              <div class="t-cert">Google Cybersecurity Certificate</div>
-              <div class="t-org">Google / Coursera</div>
-            </div>
-            <span class="t-badge active">Completed</span>
-          </div>
-        </div>
-
-        <div class="t-item reveal reveal-delay-5">
-          <div class="t-item-inner">
-            <div class="t-left">
-              <div class="t-year">2023</div>
-              <div class="t-cert">TryHackMe Top 2% Badge</div>
-              <div class="t-org">TryHackMe</div>
-            </div>
-            <span class="t-badge active">Active</span>
-          </div>
+          <span class="t-badge progress">In Progress</span>
         </div>
       </div>
-    </section>
 
-    <!-- ════════════════════════════════
+      <div class="t-item reveal reveal-delay-2">
+        <div class="t-item-inner">
+          <div class="t-left">
+            <div class="t-year">2024</div>
+            <div class="t-cert">CompTIA Security+</div>
+            <div class="t-org">CompTIA</div>
+          </div>
+          <span class="t-badge active">Completed</span>
+        </div>
+      </div>
+
+      <div class="t-item reveal reveal-delay-3">
+        <div class="t-item-inner">
+          <div class="t-left">
+            <div class="t-year">2024</div>
+            <div class="t-cert">eJPT — Junior Penetration Tester</div>
+            <div class="t-org">eLearnSecurity</div>
+          </div>
+          <span class="t-badge active">Completed</span>
+        </div>
+      </div>
+
+      <div class="t-item reveal reveal-delay-4">
+        <div class="t-item-inner">
+          <div class="t-left">
+            <div class="t-year">2023</div>
+            <div class="t-cert">Google Cybersecurity Certificate</div>
+            <div class="t-org">Google / Coursera</div>
+          </div>
+          <span class="t-badge active">Completed</span>
+        </div>
+      </div>
+
+      <div class="t-item reveal reveal-delay-5">
+        <div class="t-item-inner">
+          <div class="t-left">
+            <div class="t-year">2023</div>
+            <div class="t-cert">TryHackMe Top 2% Badge</div>
+            <div class="t-org">TryHackMe</div>
+          </div>
+          <span class="t-badge active">Active</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
        CONTACT
   ════════════════════════════════ -->
-    <section id="contact">
-      <div class="contact-inner">
-        <div class="section-header reveal" style="text-align: center">
-          <span class="section-tag">// ESTABLISH CONNECTION</span>
-          <h2 class="section-title" style="justify-content: center">
-            &lt;Contact /&gt;
-          </h2>
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-header reveal" style="text-align:center;">
+        <span class="section-tag">// ESTABLISH CONNECTION</span>
+        <h2 class="section-title" style="justify-content:center;">&lt;Contact /&gt;</h2>
+      </div>
+      <p class="contact-intro reveal">
+        Available for penetration testing engagements, bug bounty collaborations,
+        security audits, and CTF team-ups. Drop a packet my way.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-row reveal reveal-delay-1">
+          <span class="c-label">Email</span>
+          <span class="c-val">shawon.ahmed@protonmail.com</span>
+          <span class="c-arr">→</span>
         </div>
-        <p class="contact-intro reveal">
-          Available for penetration testing engagements, bug bounty
-          collaborations, security audits, and CTF team-ups. Drop a packet my
-          way.
-        </p>
-        <div class="contact-grid">
-          <a
-            class="contact-row reveal reveal-delay-1"
-            href="mailto:asaduzzamanprogrammer@gmail.com"
-          >
-            <span class="c-label">Email</span>
-            <span class="c-val">asaduzzamanprogrammer@gmail.com</span>
-
-            <span class="c-arr">→</span>
-          </a>
-          <a
-            class="contact-row reveal reveal-delay-2"
-            target="_blank"
-            href="https://github.com/Asaduzzaman-Shawon"
-          >
-            <span class="c-label">GitHub</span>
-            <span class="c-val">https://github.com/Asaduzzaman-Shawon</span>
-            <span class="c-arr">→</span>
-          </a>
-
-          <a
-            class="contact-row reveal reveal-delay-3"
-            target="_blank"
-            href="https://www.linkedin.com/in/sawon-ahmed-8827a0276/"
-          >
-            <span class="c-label">LinkedIn</span>
-            <span class="c-val">linkedin.com/in/shawon-ahmed</span>
-            <span class="c-arr">→</span>
-          </a>
-
-          <a
-            class="contact-row reveal reveal-delay-4"
-            target="_blank"
-            href="https://profile.hackthebox.com/profile/019da187-4517-70a9-b080-c03cfff27ab5"
-          >
-            <span class="c-label">HackTheBox</span>
-            <span class="c-val">My HTB account</span>
-            <span class="c-arr">→</span>
-          </a>
+        <div class="contact-row reveal reveal-delay-2">
+          <span class="c-label">GitHub</span>
+          <span class="c-val">github.com/shawon-ahmed</span>
+          <span class="c-arr">→</span>
+        </div>
+        <div class="contact-row reveal reveal-delay-3">
+          <span class="c-label">LinkedIn</span>
+          <span class="c-val">linkedin.com/in/shawon-ahmed</span>
+          <span class="c-arr">→</span>
+        </div>
+        <div class="contact-row reveal reveal-delay-4">
+          <span class="c-label">HackTheBox</span>
+          <span class="c-val">app.hackthebox.com/profile/shawon</span>
+          <span class="c-arr">→</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ════════════════════════════════
+  <!-- ════════════════════════════════
        FOOTER
   ════════════════════════════════ -->
-    <footer>
-      <div>© 2025 <span>SHAWON AHMED</span> // ALL RIGHTS RESERVED</div>
-      <div>ENCRYPTED CONNECTION ACTIVE <span>██████████</span></div>
-    </footer>
+  <footer>
+    <div>© 2025 <span>SHAWON AHMED</span> // ALL RIGHTS RESERVED</div>
+    <div>ENCRYPTED CONNECTION ACTIVE <span>██████████</span></div>
+  </footer>
 
-    <!-- ── EXTERNAL SCRIPT ── -->
-    <script src="script.js"></script>
-  </body>
+  <!-- ── EXTERNAL SCRIPT ── -->
+  <script src="script.js"></script>
+
+</body>
 </html>
