@@ -88,25 +88,109 @@ document.querySelectorAll('a, button, .project-card, .skill-card, .tool-item, .t
     ctx.fillStyle = n3;
     ctx.fillRect(0, 0, c.width, c.height);
 
-    // Stars
-    for (let i = 0; i < 320; i++) {
-      const x    = Math.random() * c.width;
-      const y    = Math.random() * c.height;
-      const r    = Math.random() * 1.3 + 0.2;
-      const a    = Math.random() * 0.8 + 0.15;
-      const warm = Math.random() > 0.8;
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = warm ? `rgba(200,220,255,${a})` : `rgba(150,200,255,${a})`;
-      ctx.fill();
-      // Occasional cross flare on bright stars
-      if (Math.random() > 0.96) {
-        ctx.strokeStyle = `rgba(180,220,255,${a * 0.5})`;
-        ctx.lineWidth   = 0.4;
-        ctx.beginPath(); ctx.moveTo(x - r * 3, y); ctx.lineTo(x + r * 3, y); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x, y - r * 3); ctx.lineTo(x, y + r * 3); ctx.stroke();
+    // ── SPIDER-MAN WEB PATTERN ──
+    // Radial web: multiple anchor points across the screen,
+    // each shoots out spokes, connected by concentric arcs.
+    const webAnchors = [
+      { x: c.width * 0.18, y: c.height * 0.12 },
+      { x: c.width * 0.72, y: c.height * 0.08 },
+      { x: c.width * 0.05, y: c.height * 0.55 },
+      { x: c.width * 0.92, y: c.height * 0.42 },
+      { x: c.width * 0.38, y: c.height * 0.88 },
+      { x: c.width * 0.82, y: c.height * 0.78 },
+    ];
+
+    webAnchors.forEach(anchor => {
+      const spokeCount = 12;
+      const ringCount  = 7;
+      const maxRadius  = Math.min(c.width, c.height) * 0.28;
+
+      // Draw spokes
+      for (let s = 0; s < spokeCount; s++) {
+        const angle = (s / spokeCount) * Math.PI * 2;
+        const ex    = anchor.x + Math.cos(angle) * maxRadius;
+        const ey    = anchor.y + Math.sin(angle) * maxRadius;
+
+        const grad = ctx.createLinearGradient(anchor.x, anchor.y, ex, ey);
+        grad.addColorStop(0,   'rgba(0,180,255,0.25)');
+        grad.addColorStop(0.5, 'rgba(0,150,220,0.12)');
+        grad.addColorStop(1,   'rgba(0,100,180,0.0)');
+
+        ctx.beginPath();
+        ctx.moveTo(anchor.x, anchor.y);
+        ctx.lineTo(ex, ey);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth   = 0.7;
+        ctx.stroke();
       }
-    }
+
+      // Draw concentric web rings between spokes
+      for (let r = 1; r <= ringCount; r++) {
+        const radius = (r / ringCount) * maxRadius;
+        const alpha  = 0.18 - r * 0.018;
+
+        ctx.beginPath();
+        for (let s = 0; s <= spokeCount; s++) {
+          const angle = (s / spokeCount) * Math.PI * 2;
+          const px    = anchor.x + Math.cos(angle) * radius;
+          const py    = anchor.y + Math.sin(angle) * radius;
+
+          // Spider-Man web uses straight segments between spoke points,
+          // not smooth arcs — gives that classic angular web look
+          const prevAngle = ((s - 1) / spokeCount) * Math.PI * 2;
+          const ppx = anchor.x + Math.cos(prevAngle) * radius;
+          const ppy = anchor.y + Math.sin(prevAngle) * radius;
+
+          if (s === 0) {
+            ctx.moveTo(px, py);
+          } else {
+            // Midpoint for very slight curve (Spider-Man web is slightly curved)
+            const midAngle = ((s - 0.5) / spokeCount) * Math.PI * 2;
+            const cr       = radius * 1.04;
+            const cpx      = anchor.x + Math.cos(midAngle) * cr;
+            const cpy      = anchor.y + Math.sin(midAngle) * cr;
+            ctx.quadraticCurveTo(cpx, cpy, px, py);
+          }
+        }
+        ctx.closePath();
+        ctx.strokeStyle = `rgba(0,170,255,${Math.max(0, alpha)})`;
+        ctx.lineWidth   = 0.6;
+        ctx.stroke();
+      }
+
+      // Glowing center node
+      const nodeGrad = ctx.createRadialGradient(anchor.x, anchor.y, 0, anchor.x, anchor.y, 4);
+      nodeGrad.addColorStop(0, 'rgba(0,220,255,0.7)');
+      nodeGrad.addColorStop(1, 'rgba(0,120,220,0)');
+      ctx.beginPath();
+      ctx.arc(anchor.x, anchor.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = nodeGrad;
+      ctx.fill();
+    });
+
+    // ── CONNECTING THREADS between anchor points ──
+    // Long diagonal silk lines linking the webs together
+    const threadPairs = [
+      [0, 1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 5], [1, 4], [0, 3]
+    ];
+    threadPairs.forEach(([a, b]) => {
+      const ax = webAnchors[a].x, ay = webAnchors[a].y;
+      const bx = webAnchors[b].x, by = webAnchors[b].y;
+      // Slight sag in thread (gravity effect)
+      const mx  = (ax + bx) / 2;
+      const my  = (ay + by) / 2 + Math.hypot(bx - ax, by - ay) * 0.08;
+      const grd = ctx.createLinearGradient(ax, ay, bx, by);
+      grd.addColorStop(0,   'rgba(0,180,255,0.0)');
+      grd.addColorStop(0.3, 'rgba(0,180,255,0.14)');
+      grd.addColorStop(0.7, 'rgba(0,180,255,0.14)');
+      grd.addColorStop(1,   'rgba(0,180,255,0.0)');
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.quadraticCurveTo(mx, my, bx, by);
+      ctx.strokeStyle = grd;
+      ctx.lineWidth   = 0.55;
+      ctx.stroke();
+    });
   }
 
   resize();
